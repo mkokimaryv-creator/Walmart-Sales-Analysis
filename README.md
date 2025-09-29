@@ -1,7 +1,6 @@
 # Walmart Sales Analysis in Power Bi
 
 ![Walmart Sales Analysis Dashboard](/Images/Walmart%20Sales%20Analysis%20Dashboard.png)
-![Walmart Sales Analysis Dashboard](/mages\Walmart Sales Analysis Dashboard.png)
 
 ## Introduction
 This dashboard was created for the regional sales managers and representatives. It shows sales performance of the *45 stores* in question over the period *February 2010 - October 2012*. Using data provided on Kaggle users of the dashboard are able to see the top and worst performing stores allocated to them. The dashboard also showcases the impact of **seasonalities** on the sales as well as **fuel prices, unemployment and temperature**. This will help them with stock allocations.
