@@ -10,7 +10,15 @@ This dashboard was created for the regional sales managers and representatives. 
 - **Data Transformation (ETL) with Power Query:**
 Cleaned, shaped and prepared the raw data for analysis, changed data types and created new columns as needed.
 - **Explicit Measures:** Formulated measures to derive key insights and KPIs as follows:
-    - `Total Sales`, `Flag Bars for Holidays`, `Previous Month Sales`, `Previous Year Sales`, `Rank Stores By Sales`, `Sales Growth Rate` and many others.
+    - `Total Sales`, *Total Sales = SUM(Walmart_Sales[Weekly_Sales])*
+    - `Flag Bars for Holidays`, *BarColor Holidays = SWITCH( TRUE(), SELECTEDVALUE(Walmart_Sales[Holiday_Program_Custom]) = "Yes", "#FFC220",  // Red for holidays
+    "#0053E2"  // Default blue)*
+    - `Previous Month Sales`, *Previous Month Sales = CALCULATE(    [Total Sales],    DATEADD(DateTable[Date],-1,MONTH))*
+    - `Previous Year Sales`, *Previous Year Sales = CALCULATE(    [Total Sales],    PREVIOUSYEAR('DateTable'[Date]))*
+    - `Rank Stores By Sales`, *Rank Stores By Sales = RANKX(    ALL(Walmart_Sales[Store]),    [Total Sales])* and *Store Rank = RANKX(    ALL(Walmart_Sales[Store]),    [Total Sales],    ,DESC,Dense)*
+    - `Top 3 Stores By Sales`, *Top 3 Stores By Sales = CALCULATE(    [Total Sales],    TOPN(3,ALLSELECTED(Walmart_Sales[Store]),    [Total Sales],DESC),    VALUES(Walmart_Sales[Store]))* 
+    - `Sales Growth Rate` and many others.
+    - 
 - **Charts Used:** 
 
     - *Line Chart* to show sales trends and highlight seasonalities. 
